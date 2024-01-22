@@ -6,10 +6,10 @@ const ShowCard = ({data}) => {
   
   const {id,name,genres,rating,image} = data?.show;
 
-  console.log(data.show)
+//   console.log(data.show)
     
   return (
-    <div className='w-[18%] p-2 bg-slate-800 rounded-lg'>
+    <div className='w-[48%] md:w-[23%] lg:w-[18%] p-2 bg-gray-800 rounded-lg'>
         <div className=''>
             <img className='w-full h-[295px]' src={image!=null ? image?.medium : IMAGE_URL} alt="" />
         </div>

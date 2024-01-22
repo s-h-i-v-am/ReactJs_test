@@ -20,7 +20,7 @@ const Home = () => {
   },[])
     
   return (
-    <div className='p-4 text-white flex justify-between flex-wrap gap-6'>
+    <div className='p-4 text-white flex justify-between flex-wrap gap-3 lg:gap-6'>
         {
             ShowsList.map((showdetails)=>(
                 <ShowCard key={showdetails.show.id} data={showdetails} />

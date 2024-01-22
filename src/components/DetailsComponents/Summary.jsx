@@ -17,32 +17,39 @@ const Summary = ({data}) => {
   function handleSubmit(e)
   {
     e.preventDefault();
+    const {name,tickets} = FormData;
 
+    if(name === "" || tickets === 0)
+    {
+        return alert("Please Fill the Fields Properly")
+    }
     setBookings([...Bookings,FormData])
     
     // console.log(Bookings);
     localStorage.setItem('bookTickets',JSON.stringify(Bookings));
+    setFormData({...FormData,name:"",tickets:0,time:"4:00 PM"});
+    alert("Tickets Booked")
   }
   return (
     <div >
 
-        <div className='w-full flex gap-6 '>
-            <div className='w-[20%] '>
+        <div className='w-full flex flex-col md:flex-row gap-6 '>
+            <div className='w-full md:w-[20%] '>
                 <img src={image?.original} alt="" />            
             </div>
 
-            <div className='w-[70%] '>
+            <div className='w-full md:w-[70%]'>
                 <h1 className='font-bold text-3xl'>{name}</h1>
                 <p>{genres?.join(",")}</p>
                 <p className='text-yellow-500'>{rating?.average || "---"}</p>
-                <p className='my-4 text-gray-300 italic'>{summary}</p>
+                <p className='my-4 text-gray-300 italic text-[14px] font-normal md:text-[18px]'>{summary}</p>
                 <button onClick={()=> setShowForm(true)} className='bg-yellow-500 hover:bg-yellow-600 px-4 py-3 rounded-md'>Book Ticket</button>
             </div>
         </div>
 
-        {ShowForm && <div className='absolute flex items-center justify-center bg-[rgba(0,0,0,0.5)] backdrop-blur-sm p-2 top-0 left-0 w-full h-screen'>
+        {ShowForm && <div className='absolute flex items-center justify-center bg-[rgba(0,0,0,0.5)] backdrop-blur-sm p-2 top-0 left-0 w-full min-h-screen'>
 
-              <form onSubmit={handleSubmit} className='bg-white text-black w-[50%] p-4 rounded-lg'>
+              <form onSubmit={handleSubmit} className='bg-white text-black w-[90%] md:w-[50%] p-4 rounded-lg'>
 
                    <div className='flex justify-between items-center'>
                         <h1 className='font-bold text-2xl'><span className='font-normal'>Movie: </span>{name}</h1>

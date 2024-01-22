@@ -15,7 +15,6 @@ const Details = () => {
      fetch(`https://api.tvmaze.com/shows/${showid}`)
     .then((response)=> response.json())
     .then((data)=> {
-        // console.log(data);
         setShowDetails(data);
     })
 
@@ -23,7 +22,7 @@ const Details = () => {
     
   return (
     <div className='p-4 text-white'>
-        {ShowDetails && <Summary data={ShowDetails}/>}
+        {ShowDetails ? <Summary data={ShowDetails}/> : <h1>Loading...</h1>}
     </div>
   )
 }
